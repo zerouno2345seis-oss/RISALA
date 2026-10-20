@@ -16,7 +16,7 @@ function runs(text,{ar,lat,latSize,bold=false,italics=false,sz=36,lsz=24}){
 const fns={};let fid=0;
 function fn(text){ // footnote content; **x** = bold title
   fid++;
-  const parts=text.split('**');const ch=[];
+  const parts=(' '+text).split('**');const ch=[];
   parts.forEach((p,i)=>ch.push(...runs(p,{ar:'FootAr',lat:'FootLat',bold:i%2===1,sz:28,lsz:20})));
   fns[fid]={children:[new Paragraph({style:'FootP',bidirectional:true,alignment:AlignmentType.START,children:ch})]};
   return fid;
